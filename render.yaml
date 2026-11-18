@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: enterprise-it-support-copilot
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: APP_NAME
+        value: "Enterprise IT Support Agentic RAG Copilot"
+      - key: APP_ENV
+        value: "production"
+      - key: PORT
+        value: "8080"
+      - key: ADMIN_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: "openai/gpt-oss-120b"
+      - key: JINA_API_KEY
+        sync: false
+      - key: MODEL_NAME
+        value: "jina-embeddings-v2-base-en"
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: QDRANT_URL
+        value: "https://38e66973-be20-4239-93bd-2e8de0c8634d.sa-east-1-0.aws.cloud.qdrant.io"
+      - key: QDRANT_COLLECTION_NAME
+        value: "IT_SUPPORT"
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: LANGSMITH_API_KEY
+        sync: false
+      - key: LANGSMITH_ENDPOINT
+        value: "https://api.smith.langchain.com"
