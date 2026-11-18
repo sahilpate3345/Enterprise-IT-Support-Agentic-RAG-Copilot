@@ -1,0 +1,82 @@
+[
+  {
+    "id": "TC01",
+    "title": "Windows password reset",
+    "question": "I forgot my Windows login password. What should I do?",
+    "expected_source": "private_kb",
+    "expected_output": "Use the self-service identity portal to reset your password. Your new password must contain at least 14 characters. If self-service recovery fails, contact the IT Service Desk. Never share your password or MFA codes with support personnel.",
+    "reference_output": "Based on the company knowledge base, employees should: 1. Open the self-service identity portal. 2. Select Forgot Password. 3. Verify their identity. 4. Set a password of at least 14 characters. 5. Contact IT Service Desk if recovery fails. Never share passwords or MFA codes."
+  },
+  {
+    "id": "TC02",
+    "title": "Account locked",
+    "question": "My account is locked after multiple failed login attempts. What should I do?",
+    "expected_source": "private_kb",
+    "expected_output": "After five failed login attempts, the account may be temporarily locked. Follow the account recovery process through the self-service identity portal. If recovery fails, contact the IT Service Desk.",
+    "reference_output": "The company password policy states that accounts may be temporarily locked after five failed login attempts. Use the self-service identity portal to recover your account. Contact IT Service Desk if you cannot recover access."
+  },
+  {
+    "id": "TC03",
+    "title": "Multiple employees email issue",
+    "question": "How should IT troubleshoot email problems affecting multiple employees?",
+    "expected_source": "private_kb",
+    "expected_output": "1. Confirm whether multiple employees are affected. 2. Check network connectivity. 3. Review the internal service-status dashboard. 4. Do not ask every employee to reinstall their email client. 5. Escalate the issue as a suspected service-wide incident.",
+    "reference_output": "IT should first determine the scope of the email issue. Check network connectivity and the service-status dashboard. If multiple employees are affected, escalate the suspected service incident. Avoid asking users to reinstall email software."
+  },
+  {
+    "id": "TC04",
+    "title": "Outlook email issue",
+    "question": "My Outlook cannot send or receive emails. What should I check?",
+    "expected_source": "private_kb",
+    "expected_output": "First determine whether the problem affects one user or multiple users. For a single-user issue: 1. Sign out and sign back in. 2. Verify mailbox quota. 3. Test the web email client. If multiple users are affected, check the service-status dashboard and escalate.",
+    "reference_output": "Check whether other employees can send or receive emails. If the issue affects only you: 1. Sign out and sign back in. 2. Check your mailbox storage quota. 3. Test email through the web client. If widespread, escalate to IT."
+  },
+  {
+    "id": "TC05",
+    "title": "Company VPN connection",
+    "question": "How do I connect to the company VPN from home?",
+    "expected_source": "private_kb",
+    "expected_output": "1. Install NovaSecure VPN from the internal Software Portal. 2. Open the VPN client. 3. Sign in using your company email and password. 4. Complete MFA authentication. 5. Select the closest corporate gateway.",
+    "reference_output": "To connect to the company VPN: 1. Download NovaSecure from the internal Software Portal. 2. Launch the VPN client. 3. Enter your company credentials. 4. Complete MFA verification. 5. Select the closest corporate gateway."
+  },
+  {
+    "id": "TC06",
+    "title": "VPN firewall issue",
+    "question": "My VPN is not connecting. Can I disable the firewall to fix it?",
+    "expected_source": "private_kb",
+    "expected_output": "No. Do not disable endpoint security or firewall settings. Instead: 1. Confirm internet connectivity. 2. Restart the VPN client. 3. Try another corporate gateway. 4. If the problem continues, open an IT ticket with a screenshot of the error.",
+    "reference_output": "Disabling the firewall is not permitted. First verify your internet connection. Restart the VPN client and try another corporate gateway. If the issue continues, contact IT support with an error screenshot."
+  },
+  {
+    "id": "TC07",
+    "title": "MFA methods",
+    "question": "Which MFA methods are approved for company email and VPN?",
+    "expected_source": "private_kb",
+    "expected_output": "MFA is mandatory for company email, VPN, cloud administration, and other protected systems. Approved methods: 1. Company authenticator app. 2. Registered hardware security keys. SMS is permitted only when explicitly enabled as a recovery method.",
+    "reference_output": "The approved MFA methods are: - Company authenticator application. - Registered hardware security keys. SMS can only be used when explicitly enabled as a recovery method. MFA is mandatory for protected company systems."
+  },
+  {
+    "id": "TC08",
+    "title": "Slow laptop",
+    "question": "My laptop is running very slowly. How should IT troubleshoot it?",
+    "expected_source": "private_kb",
+    "expected_output": "IT should check: 1. CPU usage. 2. Memory usage. 3. Available storage space. 4. Startup applications. 5. Operating system updates. 6. Endpoint security scan status. Do not disable security agents. Escalate if hardware diagnostics report failure or repeated shutdowns continue after software remediation.",
+    "reference_output": "To troubleshoot a slow laptop: 1. Check CPU and RAM usage. 2. Check available disk space. 3. Review startup applications. 4. Install pending operating system updates. 5. Check endpoint security scan status. Never disable endpoint security agents. Escalate persistent hardware problems to IT."
+  },
+  {
+    "id": "TC09",
+    "title": "Ticket priority P1",
+    "question": "What priority should be assigned to a company-wide email outage?",
+    "expected_source": "private_kb",
+    "expected_output": "Assign P1 priority. According to the company IT ticket priority policy, P1 is used for: - Company-wide outages. - Critical security incidents.",
+    "reference_output": "A company-wide email outage should be classified as P1 because it affects the entire company and disrupts a critical business service."
+  },
+  {
+    "id": "TC10",
+    "title": "Ticket priority classification",
+    "question": "What is the difference between P1, P2, P3, and P4 IT tickets?",
+    "expected_source": "private_kb",
+    "expected_output": "P1: Company-wide outage or critical security incident. P2: Major team blocked with no available workaround. P3: Individual user blocked or experiencing degraded service with a limited workaround. P4: Standard request, information request, or low-impact issue.",
+    "reference_output": "P1 - Company-wide outage or critical security incident. P2 - Major team blocked without a workaround. P3 - Individual user blocked or experiencing degraded service. P4 - Standard service or information request."
+  }
+]
