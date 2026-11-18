@@ -1,10 +1,12 @@
 
 from functools import lru_cache
 from pathlib import Path
-
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parents[2]
+load_dotenv(BASE_DIR / ".env", override=True)
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -21,6 +23,7 @@ class Settings(BaseSettings):
 
     # Models
     model_name: str = "jina-embeddings-v2-base-en"
+    groq_model: str = "openai/gpt-oss-120b"
 
     # Qdrant
     qdrant_url: str = ""
@@ -44,7 +47,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=str(BASE_DIR / ".env"),
         env_file_encoding="utf-8",
-        extra="ignore"
+        extra="ignore",
+        override=True
     )
 
 

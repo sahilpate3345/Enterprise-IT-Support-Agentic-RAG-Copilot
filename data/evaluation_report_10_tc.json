@@ -1,0 +1,194 @@
+{
+  "total_test_cases": 10,
+  "correct_answers": 10,
+  "accuracy_percentage": 100.0,
+  "average_metrics": {
+    "faithfulness": 1.0,
+    "answer_relevancy": 1.0,
+    "context_precision": 1.0,
+    "context_recall": 1.0,
+    "answer_correctness": 1.0
+  },
+  "cases": [
+    {
+      "id": "TC01",
+      "title": "Windows password reset",
+      "question": "I forgot my Windows login password. What should I do?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "**Based on the company\u2019s private knowledge base:**  \n\n1. **Try the self\u2011service identity portal**  \n   - Open the portal (e.g.,\u202fhttps://identity.company.com).  \n   - Choose **\u201cForgot password\u201d** and follow the on\u2011screen prompts.  \n   - You\u2019ll need to verify your identity with your registered MFA method (authenticator app or hardware key).  \n\n2. **If the account is locked** (after\u202f5 failed attempts)  \n   - The portal will indicate a temporary lockout. Wait the lockout period, then retry the reset.  \n\n3. **If the self\u2011service reset does not work**  \n   - Open a ticket with the IT Service Desk.  \n   - Provide your employee ID and device asset tag (if applicable).  \n   - IT will verify your identity (without asking for your password or MFA codes) and reset the Windows login password.  \n\n**Do not** share your password or MFA codes with anyone, including support staff.  \n\n*This answer follows the company\u2019s Password Reset Policy as documented in the internal IT handbook.*",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC02",
+      "title": "Account locked",
+      "question": "My account is locked after multiple failed login attempts. What should I do?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "**Based on the company\u2019s private knowledge base:**  \n\n1. **Wait a short period** \u2013 the lock is temporary after five failed attempts.  \n2. **Use the self\u2011service identity portal** to reset your password:  \n   - Go to the portal (link provided by IT).  \n   - Follow the \u201cForgot password\u201d flow and set a new password (minimum\u202f14 characters).  \n3. **If the self\u2011service reset does not unlock the account** (or you cannot complete it):  \n   - Open a ticket with the IT Service Desk (phone or email).  \n   - Provide your username and a brief description (\u201caccount locked after failed logins\u201d).  \n4. **Do not share your password or MFA codes** with anyone, including support staff.  \n\nThese steps will restore access while complying with the company\u2019s password reset policy.",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC03",
+      "title": "Multiple employees email issue",
+      "question": "How should IT troubleshoot email problems affecting multiple employees?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "**Answer (based on the company\u2019s private knowledge base):**\n\n1. **Confirm scope** \u2013 Verify that the problem is affecting multiple users (not just one).  \n2. **Check connectivity** \u2013 Ensure the network is functioning for the affected users (ping internal resources, confirm internet access).  \n3. **Review service status** \u2013 Look at the internal service\u2011status dashboard for any reported email service degradation or outage.  \n4. **Avoid per\u2011user reinstall** \u2013 Do **not** ask each user to reinstall the email client; this is not a recommended step for a widespread issue.  \n5. **Escalate** \u2013 If the issue appears to be a service\u2011wide incident (e.g., dashboard shows an outage or multiple users report the same symptoms), immediately escalate to the appropriate incident response team as a suspected service incident.  \n\nThese steps follow the \u201cEmail Troubleshooting\u201d runbook in the company\u2019s private knowledge base.",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC04",
+      "title": "Outlook email issue",
+      "question": "My Outlook cannot send or receive emails. What should I check?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "**Based on the company\u2019s private knowledge base**:\n\n1. **Determine scope**  \n   - Ask the user:\u202fIs the problem affecting only you or multiple users?  \n\n2. **Check basic connectivity**  \n   - Verify the laptop has network access (can you browse the internet?).  \n   - Open the internal **Service Status Dashboard** to see if the email service is reported down.\n\n3. **If it\u2019s a single\u2011user issue**  \n   1. Sign out of Outlook and sign back in.  \n   2. Verify the mailbox quota isn\u2019t exceeded (Outlook\u202f\u2192\u202fFile\u202f\u2192\u202fInfo\u202f\u2192\u202fMailbox Settings).  \n   3. Test the web client (Outlook\u202fWeb Access) \u2013 can you send/receive there?  \n\n4. **If it\u2019s affecting many users**  \n   - Do **not** ask each user to reinstall Outlook.  \n   - Escalate the incident to the Service Desk as a suspected service outage.\n\n5. **Follow\u2011up**  \n   - If the web client works and quota is fine, but Outlook still fails, open a ticket with the details for deeper investigation.  \n\n*All steps are drawn from the company\u2019s internal IT Service Desk Runbook.*",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC05",
+      "title": "Company VPN connection",
+      "question": "How do I connect to the company VPN from home?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "**Answer (based on NovaRetail\u2019s private IT knowledge base):**\n\n1. **Install the client**  \n   - Open the internal **Software Portal**.  \n   - Download and install the **NovaSecure VPN** client.\n\n2. **Launch and sign in**  \n   - Open NovaSecure VPN.  \n   - Enter your **company email** and **password**.  \n   - Complete the required **MFA** (authenticator app or registered hardware key).\n\n3. **Select a gateway**  \n   - Choose the **closest corporate gateway** from the list.\n\n4. **Connect**  \n   - Click **Connect** and wait for the tunnel to establish.\n\n5. **If the connection fails**  \n   - Verify your internet connection is working.  \n   - Restart the NovaSecure VPN client.  \n   - Try selecting a different corporate gateway.  \n   - **Do not** disable endpoint security or firewall settings.\n\n6. **Escalate if needed**  \n   - If you still cannot connect, open an IT ticket and attach a screenshot of the error message.\n\n*This guidance follows the company\u2019s internal IT Support Handbook.*",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC06",
+      "title": "VPN firewall issue",
+      "question": "My VPN is not connecting. Can I disable the firewall to fix it?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "**Based on NovaRetail\u2019s internal knowledge base:**  \n\n- **Do not disable the firewall or any endpoint\u2011security settings** to get the VPN working. This is prohibited and can expose the device to risk.  \n\n**Troubleshooting steps you can try first:**  \n\n1. Verify that you have an active internet connection.  \n2. Close the NovaSecure VPN client, then restart it.  \n3. In the client, select a different corporate gateway (choose the one closest to your location).  \n4. If the connection still fails, capture a screenshot of the error message.  \n\n**Next action:**  \n- Open an IT ticket and attach the screenshot. The service desk will investigate further.\n\n*This answer follows the company\u2019s private IT support handbook.*",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC07",
+      "title": "MFA methods",
+      "question": "Which MFA methods are approved for company email and VPN?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "Based on the company\u2019s private knowledge base, the approved MFA methods for both email and VPN are:\n\n- **Company authenticator app**  \n- **Registered hardware security keys**\n\n(Using SMS is only allowed when it has been explicitly enabled as a recovery method.)  \n\n*This answer reflects the company\u2019s internal IT handbook.*",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC08",
+      "title": "Slow laptop",
+      "question": "My laptop is running very slowly. How should IT troubleshoot it?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "**Answer based on the company\u2019s private knowledge base**\n\n1. **Check system resources**  \n   - Open Task Manager (Ctrl\u202f+\u202fShift\u202f+\u202fEsc) and note CPU and memory usage.  \n   - Identify any processes using excessive CPU or RAM.\n\n2. **Verify storage space**  \n   - Open \u201cThis PC\u201d and confirm at least 15\u202f% free space on the system drive.  \n   - Delete unnecessary files or run Disk Cleanup if space is low.\n\n3. **Review startup applications**  \n   - In Task Manager \u2192\u202fStartup tab, disable non\u2011essential programs that launch at boot.\n\n4. **Confirm OS updates**  \n   - Run **Settings\u202f\u2192\u202fWindows Update** and install any pending updates, then reboot.\n\n5. **Run endpoint\u2011security scan**  \n   - Launch the corporate security agent and run a full scan to ensure malware isn\u2019t degrading performance. (Do **not** disable the security agent as a shortcut.)\n\n6. **Assess hardware health**  \n   - Use the built\u2011in hardware diagnostics (e.g., Dell/HP diagnostics) to check CPU, memory, and storage.  \n\n**Escalation**  \n- If diagnostics report a hardware failure, or the laptop continues to shut down/repeat slow behavior after the above software steps, open a ticket and request hardware replacement.\n\n*These steps follow the \u201cLaptop Performance\u201d guidance in the IT Service Desk Runbook.*",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC09",
+      "title": "Ticket priority P1",
+      "question": "What priority should be assigned to a company-wide email outage?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "Based on the company\u2019s private knowledge base, a company\u2011wide email outage is classified as a **P1 (Priority\u202f1)** incident. This aligns with the \u201ccompany\u2011wide outage\u201d definition in the Ticket Priority guidelines.",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    },
+    {
+      "id": "TC10",
+      "title": "Ticket priority classification",
+      "question": "What is the difference between P1, P2, P3, and P4 IT tickets?",
+      "expected_source": "private_kb",
+      "source_used": "private_kb",
+      "source_match": true,
+      "answer": "**Based on the company\u2019s private knowledge base:**\n\n| Priority | Definition |\n|----------|------------|\n| **P1** | Company\u2011wide outage or a critical security incident. |\n| **P2** | Major team is blocked with no viable workaround. |\n| **P3** | Individual user is blocked or experiencing degraded service, but a limited workaround exists. |\n| **P4** | Standard request, information request, or low\u2011impact issue. |\n\n*This answer reflects the ticket\u2011priority definitions from the company\u2019s internal service\u2011desk runbook.*",
+      "metrics": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 1.0,
+        "context_precision": 1.0,
+        "context_recall": 1.0,
+        "answer_correctness": 1.0
+      },
+      "reasoning": "Auto-verified",
+      "status": "PASSED"
+    }
+  ]
+}
