@@ -45,11 +45,12 @@ def route_question(state: AgentState):
     router = llm().with_structured_output(RouteDecision, method="json_mode")
     decision = router.invoke(f"""
 You route messages for an enterprise IT support assistant.
-Use kb for questions about company IT policies, VPN, password reset, MFA, laptop setup,
-software access, security, email, devices, troubleshooting, or technology support.
-Use direct only for greetings, thanks, or casual chat that needs no company knowledge.
+Direct chat route: ONLY use "direct" for pure greetings, hellos, goodbyes, thanks, or polite pleasantries (e.g., "hi", "hello", "good morning", "thank you").
+Knowledge base route: Use "kb" for ALL other questions, including:
+- Any question asking for information, facts, definitions, math, coding, prime numbers, trivia, external topics, or IT/workplace support issues.
+Every question seeking information MUST go through "kb" so it can be verified against company documentation and external search.
 Question: {state['question']}
-Return valid JSON like {{"route":"kb"}}.
+Return valid JSON like {{"route":"kb"}} or {{"route":"direct"}}.
 """)
     return {"source_used": decision.route, "trace": add_trace(state, f"Router → {decision.route.upper()}")}
 
@@ -97,10 +98,14 @@ def search_web(state: AgentState):
 def grade_web(state: AgentState):
     grader = llm().with_structured_output(EvidenceGrade, method="json_mode")
     grade = grader.invoke(f"""
+You grade evidence for an enterprise IT support assistant.
+The assistant only answers questions related to enterprise IT support, technology, systems, troubleshooting, or company policies.
 Question: {state['question']}
-Web evidence:\n{state['web_results']}
-Return good if the evidence is sufficient and directly relevant; otherwise weak.
-Return valid JSON like {{"grade":"good"}}.
+Web evidence:
+{state['web_results']}
+Return good only if the question is an IT/technology support issue AND the web evidence provides sufficient, trustworthy information to answer it safely.
+Return weak if the question is not about IT support (such as math problems, prime numbers, general trivia, recipes, personal chat) OR if the web evidence is insufficient or irrelevant.
+JSON: {{"grade":"good"}} or {{"grade":"weak"}}.
 """)
     return {"web_grade": grade.grade, "trace": add_trace(state, f"Web evidence grade → {grade.grade.upper()}")}
 
@@ -149,14 +154,21 @@ Question: {state['question']}\n\nWeb evidence:\n{state['web_results']}
     return {"answer": answer, "source_used": "web_search", "trace": add_trace(state, "Answer generation → WEB SEARCH")}
 
 def direct_answer(state: AgentState):
-    answer = llm().invoke(f"Respond briefly and naturally to: {state['question']}").content
+    q_lower = state['question'].strip().lower()
+    if q_lower in {"hi", "hii", "hello", "hey", "hola"}:
+        return {
+            "answer": "Hello! How can I assist you with your IT support needs today?",
+            "source_used": "direct",
+            "trace": add_trace(state, "Direct response → greeting"),
+        }
+    answer = llm().invoke(f"You are an enterprise IT support assistant. Respond briefly and naturally to this greeting or casual remark: {state['question']}").content
     return {"answer": answer, "source_used": "direct", "trace": add_trace(state, "Direct response → no retrieval")}
 
 def insufficient(state: AgentState):
     return {
-        "answer": "I couldn't find enough reliable evidence in the company knowledge base or external search to answer confidently. Please contact the IT help desk or provide more details.",
+        "answer": "This information is not available in the company documentation or external search. As an enterprise IT support assistant, I can only assist with IT and workplace technology questions. Please contact the IT help desk if you need assistance with company systems.",
         "source_used": "insufficient_evidence",
-        "trace": add_trace(state, "Stopped → insufficient reliable evidence"),
+        "trace": add_trace(state, "Stopped → information not available in doc and web search"),
     }
 
 def build_graph():
