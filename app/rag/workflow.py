@@ -170,15 +170,11 @@ Web Evidence:
     return {"answer": answer, "source_used": "web_search", "trace": add_trace(state, "Answer generation → WEB SEARCH")}
 
 def direct_answer(state: AgentState):
-    q_lower = state['question'].strip().lower()
-    if q_lower in {"hi", "hii", "hello", "hey", "hola"}:
-        return {
-            "answer": "Hello! How can I assist you with your IT support needs today?",
-            "source_used": "direct",
-            "trace": add_trace(state, "Direct response → greeting"),
-        }
-    answer = llm().invoke(f"You are an enterprise IT support assistant. Respond briefly and naturally to this greeting or casual remark: {state['question']}").content
-    return {"answer": answer, "source_used": "direct", "trace": add_trace(state, "Direct response → no retrieval")}
+    return {
+        "answer": "Hello! How can I assist you?",
+        "source_used": "direct",
+        "trace": add_trace(state, "Direct response → greeting"),
+    }
 
 def insufficient(state: AgentState):
     return {
