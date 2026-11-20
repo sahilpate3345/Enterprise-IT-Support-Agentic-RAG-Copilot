@@ -131,25 +131,40 @@ Question: {state['question']}
 def generate_from_kb(state: AgentState):
     context = "\n\n".join(f"[Source: {d.metadata.get('source','unknown')}]\n{d.page_content}" for d in state["kb_docs"])
     answer = llm().invoke(f"""
-You are an enterprise IT support copilot. Answer ONLY from the private company KB below.
-Be concise, actionable, and safe. If steps are present, present them clearly.
-Do not invent policy details. Mention that the answer is based on the company's private knowledge base.
-Question: {state['question']}\n\nPrivate KB:\n{context}
+You are an enterprise IT support copilot. Answer ONLY using the facts explicitly stated in the private company knowledge base below.
+Strict Anti-Hallucination Rules:
+1. Do NOT assume, extrapolate, or invent any policy, process, tool name, or requirement that is not written below.
+2. If the context does not fully answer a specific part of the user's question, clearly state that the specific detail is not covered in the internal handbook and direct the user to the IT Help Desk.
+3. Keep instructions factual, structured, concise, and safe.
+4. Always state that the answer is based on the company's private knowledge base.
+
+Question: {state['question']}
+
+Private KB Context:
+{context}
 """).content
     citations = []
     seen = set()
     for d in state["kb_docs"]:
         src = d.metadata.get("source", "Private KB")
-        if src not in seen:
-            seen.add(src)
-            citations.append({"title": src.split("/")[-1], "url": "", "type": "private_kb"})
+        filename = Path(src).name if src else "Private KB"
+        if filename not in seen:
+            seen.add(filename)
+            citations.append({"title": filename, "url": "", "type": "private_kb"})
     return {"answer": answer, "source_used": "private_kb", "citations": citations, "trace": add_trace(state, "Answer generation → PRIVATE KB")}
 
 def generate_from_web(state: AgentState):
     answer = llm().invoke(f"""
-You are an enterprise IT support copilot. The private company KB was insufficient.
-Answer ONLY from the web evidence below. Clearly say this is external web information and may need IT validation before changing company-managed systems.
-Question: {state['question']}\n\nWeb evidence:\n{state['web_results']}
+You are an enterprise IT support copilot. The private company KB was insufficient, so the following external web search results were retrieved.
+Strict Anti-Hallucination Rules:
+1. Answer ONLY using the facts from the web evidence below. Do not guess or invent instructions.
+2. Clearly state to the employee that this guidance is from external vendor/web documentation and must be validated with company IT security before changing any enterprise-managed device.
+3. If the web evidence does not contain a verified solution, recommend opening a ticket with the IT Help Desk.
+
+Question: {state['question']}
+
+Web Evidence:
+{state['web_results']}
 """).content
     return {"answer": answer, "source_used": "web_search", "trace": add_trace(state, "Answer generation → WEB SEARCH")}
 

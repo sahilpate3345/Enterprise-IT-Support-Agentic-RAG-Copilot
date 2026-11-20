@@ -1,6 +1,13 @@
 # Enterprise IT Support Agentic RAG Copilot 🚀
 
+[![Live Deployment on Render](https://img.shields.io/badge/Live%20Demo-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://enterprise-it-support-agentic-rag-copilot-ae36.onrender.com/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sahilpate3345/Enterprise-IT-Support-Agentic-RAG-Copilot)
+
 An end-to-end **Forward Deployed Engineering (FDE) project** that transforms enterprise IT support documentation into an intelligent, evidence-grounded support assistant.
+
+- 🌐 **Live Web Application**: [https://enterprise-it-support-agentic-rag-copilot-ae36.onrender.com/](https://enterprise-it-support-agentic-rag-copilot-ae36.onrender.com/)
+- 📖 **Interactive Swagger Docs**: [https://enterprise-it-support-agentic-rag-copilot-ae36.onrender.com/docs](https://enterprise-it-support-agentic-rag-copilot-ae36.onrender.com/docs)
+- 🩺 **Health Check API**: [https://enterprise-it-support-agentic-rag-copilot-ae36.onrender.com/api/health](https://enterprise-it-support-agentic-rag-copilot-ae36.onrender.com/api/health)
 
 Built using **LangGraph, FastAPI, Qdrant Cloud, Jina Embeddings, Groq LLMs, and Tavily**, this system intelligently routes employee questions between private company knowledge bases and external vendor documentation.
 
